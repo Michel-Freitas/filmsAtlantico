@@ -1,9 +1,12 @@
 import React from "react";
+import Menu from "./components/layout/Menu";
+import Home from "./views/Home";
 
 const App: React.FC = () => {
     return (
         <div>
-            Films Atlântico
+            <Menu />
+            <Home />
         </div>
     )
 }

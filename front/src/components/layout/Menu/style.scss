@@ -1,0 +1,33 @@
+.menu {
+    height: 50px;
+    background-color: #1E272E;
+    display: flex;
+    column-gap: 20px;
+
+    .menu__logo {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+    }
+
+    .menu__itemGroup {
+        display: flex;
+
+        .menu__item {
+            display: flex;
+            align-items: center;
+            min-width: 80px;
+            justify-content: center;
+            color: #c6c2c2;
+
+            &:hover {
+                background-color: #ffffff;
+                cursor: pointer;
+                border-bottom: 1px solid #1E272E;
+                color: #1E272E;
+            }
+        }
+    }
+}
