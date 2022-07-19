@@ -1,20 +1,37 @@
 import React from "react";
-import { StartIcon } from "../../../assets/icons";
+import { StartIcon, StartWithBackgroundIcon } from "../../../assets/icons";
 import "./style.scss";
 
-const MovieCard: React.FC = () => {
+type MovieCard = {
+    coverUrl: string;
+    movieTitle: string;
+    releaseDate: string;
+    movieId: number;
+    isFavorite: boolean;
+    favoriteButtonAction: (id: number) => void
+    detailsButtonAction: () => void
+}
+
+const MovieCard: React.FC<MovieCard> = (props) => {
     return (
         <div className="movieCard">
             <header className="movieCard__header">
-                <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/fVzXp3NwovUlLe7fvoRynCmBPNc.jpg" alt="" />
+                <img src={props.coverUrl} />
             </header>
             <main className="movieCard__main">
-                <span>Homem-Aranha: Sem Volta Para Casa</span>
-                <span>16/12/2021</span>
+                <span>{props.movieTitle}</span>
+                <span>{props.releaseDate}</span>
             </main>
             <footer className="movieCard__footer">
-                <button><StartIcon /> Favorito</button>
-                <button>Detalhes</button>
+                <button
+                    onClick={() => props.favoriteButtonAction(props.movieId)}
+                >
+                    {props.isFavorite
+                        ? <StartWithBackgroundIcon />
+                        : <StartIcon />
+                    } Favorito
+                </button>
+                <button onClick={props.detailsButtonAction}>Detalhes</button>
             </footer>
         </div>
     )
