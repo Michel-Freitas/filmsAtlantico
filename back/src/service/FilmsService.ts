@@ -8,7 +8,7 @@ export default class FilmsService {
 
     async popularFilms() {
         try {
-            const page = randomNumberBetween(1, 1000);
+            const page = randomNumberBetween(1, 400);
             const { data } = await tmdbApi.get(`3/movie/popular?page=${page}`);
             const filmsList: IFilm[] = data.results.map((item: any) => {
                 return {
