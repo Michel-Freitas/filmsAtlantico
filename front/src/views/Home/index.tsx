@@ -20,6 +20,15 @@ const Home: React.FC = () => {
         setFilmsList(result);
     }
 
+    function changeFavorite(id: number) {
+        setFilmsList((state) => state
+            .map(item => item.id === id
+                ? {...item, favorite: !item.favorite}
+                : item
+            )
+        );
+    }
+
     return (
         <div className="home">
             <InputText
@@ -32,7 +41,7 @@ const Home: React.FC = () => {
                         key={item.id}
                         coverUrl={`${VITE_BASE_URL_IMAGES}${item.coverPhoto}`}
                         detailsButtonAction={() => {}}
-                        favoriteButtonAction={() => {}}
+                        favoriteButtonAction={changeFavorite}
                         movieTitle={item.title}
                         releaseDate={item.releaseDate}
                         movieId={item.id}
