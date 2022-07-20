@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.scss";
 
 const Menu: React.FC = () => {
@@ -8,12 +9,12 @@ const Menu: React.FC = () => {
                 <h2>Films Atlântico</h2>
             </div>
             <div className="menu__itemGroup">
-                <a href="#" className="menu__item">
+                <Link to="/" className="menu__item">
                     <span>Home</span>
-                </a>
-                <a href="#" className="menu__item">
+                </Link>
+                <Link to="/favorites" className="menu__item">
                     <span>Favoritos</span>
-                </a>
+                </Link>
             </div>
         </div>
     )
