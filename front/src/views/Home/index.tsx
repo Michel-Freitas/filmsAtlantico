@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import InputText from "../../components/InputText";
 import { useFilmsService } from "../../service";
 import BoardMovies from "../../components/BoardMovies";
@@ -11,9 +11,11 @@ const Home: React.FC = () => {
     const { films, setFilms, changeFavorite } = useBoardMovies();
     const filmService = useFilmsService();
 
+    const [ searchInput, setSearchInput] = useState<string>("");
+
     useEffect(() => {
-        initial();
-    }, []);
+        searchFilm();
+    }, [searchInput]);
 
     async function initial() {
         if (films.length != 0) return;
@@ -21,11 +23,22 @@ const Home: React.FC = () => {
         setFilms(result);
     }
 
+    async function searchFilm() {
+        if (searchInput.length > 0) {
+            const result = await filmService.getFilmsSearch(searchInput);
+            setFilms(result);
+        } else {
+            initial();
+        }
+    }
+
     return (
         <div className="home">
             <InputText
                 name="searchFilms"
                 placeholder="Pesquisar..."
+                value={searchInput}
+                onChange={setSearchInput}
             />
             <BoardMovies>
                 {films.map((item) => {
