@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import InputText from "../../components/InputText";
 import { useFilmsService } from "../../service";
-import "./style.scss";
 import BoardMovies from "../../components/BoardMovies";
 import { useBoardMovies } from "../../hooks";
 import MovieCard from "../../components/MovieCard";
