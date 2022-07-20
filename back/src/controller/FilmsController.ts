@@ -23,13 +23,13 @@ export default class FilmsController {
             if (name == "") {
                 throw new GeneralException(
                     ExceptionType.BAD_REQUEST,
-                    "the 'name' attribute cannot be empty"
+                    "O atributo 'name' não pode ser vazio!"
                 );
             }
             if (typeof name != "string") {
                 throw new GeneralException(
                     ExceptionType.BAD_REQUEST,
-                    "the 'name' attribute must be a string"
+                    "O atributo 'name' deve ser um texto!"
                 );
             }
             const result = await filmsService.searchFilms(name);

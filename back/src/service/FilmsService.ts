@@ -30,13 +30,13 @@ export default class FilmsService {
             if (data.results.length == 0) {
                 throw new GeneralException(
                     ExceptionType.NOT_FOUND,
-                    "film not found."
+                    "Filme não encontrado!"
                 );
             }
             if (data.results.length > 12) {
                 throw new GeneralException(
                     ExceptionType.URI_TOO_LONG,
-                    "Result list too large. Enter more values to continue the query."
+                    "Lista de resultados muito grande. Por favor informe mais dados."
                 );
             }
             const filmsList: IFilm[] = data.results.map((item: any) => {
