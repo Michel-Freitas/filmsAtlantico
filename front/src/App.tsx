@@ -3,14 +3,17 @@ import Menu from "./components/layout/Menu";
 import "./app.scss";
 import AppRoutes from "./routes";
 import { BrowserRouter } from "react-router-dom";
+import { FilmsProvider } from "./context/FilmsContext";
 
 const App: React.FC = () => {
     return (
         <BrowserRouter>
-            <div className="app">
-                <Menu />
-                <AppRoutes />
-            </div>
+            <FilmsProvider>
+                <div className="app">
+                    <Menu />
+                    <AppRoutes />
+                </div>
+            </FilmsProvider>
         </BrowserRouter>
     )
 }
