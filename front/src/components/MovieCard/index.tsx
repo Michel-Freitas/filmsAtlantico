@@ -1,5 +1,5 @@
 import React from "react";
-import { StartIcon, StartWithBackgroundIcon } from "../../../assets/icons";
+import { StartIcon, StartWithBackgroundIcon } from "../../assets/icons";
 import "./style.scss";
 
 type MovieCard = {

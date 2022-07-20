@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import InputText from "../../components/InputText";
-import { IFilm } from "../../schemas/FilmSchemas";
 import { useFilmsService } from "../../service";
-import MovieCard from "./MovieCard";
 import "./style.scss";
+import BoardMovies from "../../components/BoardMovies";
+import { useBoardMovies } from "../../hooks";
+import MovieCard from "../../components/MovieCard";
 
 const Home: React.FC = () => {
-    
+
     const { VITE_BASE_URL_IMAGES } = import.meta.env;
+    const { films, setFilms, changeFavorite } = useBoardMovies();
     const filmService = useFilmsService();
-    const [filmsList, setFilmsList] = useState<IFilm[]>([]);
 
     useEffect(() => {
         initial();
     }, []);
 
     async function initial() {
+        if (films.length != 0) return;
         const result = await filmService.getFilms();
-        setFilmsList(result);
-    }
-
-    function changeFavorite(id: number) {
-        setFilmsList((state) => state
-            .map(item => item.id === id
-                ? {...item, favorite: !item.favorite}
-                : item
-            )
-        );
+        setFilms(result);
     }
 
     return (
@@ -35,12 +28,12 @@ const Home: React.FC = () => {
                 name="searchFilms"
                 placeholder="Pesquisar..."
             />
-            <main className="home__main">
-                {filmsList.map((item) => {
+            <BoardMovies>
+                {films.map((item) => {
                     return <MovieCard
                         key={item.id}
                         coverUrl={`${VITE_BASE_URL_IMAGES}${item.coverPhoto}`}
-                        detailsButtonAction={() => {}}
+                        detailsButtonAction={() => { }}
                         favoriteButtonAction={changeFavorite}
                         movieTitle={item.title}
                         releaseDate={item.releaseDate}
@@ -48,7 +41,7 @@ const Home: React.FC = () => {
                         isFavorite={item.favorite}
                     />
                 })}
-            </main>
+            </BoardMovies>
         </div>
     )
 }
