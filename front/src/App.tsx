@@ -1,14 +1,17 @@
 import React from "react";
 import Menu from "./components/layout/Menu";
-import Home from "./views/Home";
 import "./app.scss";
+import AppRoutes from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 const App: React.FC = () => {
     return (
-        <div className="app">
-            <Menu />
-            <Home />
-        </div>
+        <BrowserRouter>
+            <div className="app">
+                <Menu />
+                <AppRoutes />
+            </div>
+        </BrowserRouter>
     )
 }
 
