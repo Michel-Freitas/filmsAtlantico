@@ -36,6 +36,6 @@ Aplicação que tem como objetico fazer a consultade filmes na plataforma [TMDB]
 - Execute o comando **yarn install** para baixar os pacotes
 - Criei um arquivo _.env_ e adicione essas variáveis
     - **VITE_BASE_URL_IMAGES**=https://www.themoviedb.org/t/p/w300_and_h450_bestv2/
-    - **VITE_BASE_URL_IMAGES**=https://www.themoviedb.org/t/p/w300_and_h450_bestv2/
+    - **VITE_FILMS_ATLANTICO_API_URL**=http://localhost:9005/
 - Salve o arquivo
 - Execute o comando **yarn dev**
